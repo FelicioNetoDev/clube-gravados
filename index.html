@@ -613,18 +613,160 @@ section {
 footer {
     background: var(--color-dark);
     color: white;
-    padding: 3rem 0 2rem;
-    text-align: center;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 3rem 0 1rem;
+}
+
+footer h5 {
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--color-accent);
 }
 
 footer a {
-    color: var(--color-accent);
-    font-weight: 500;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    transition: var(--transition);
+    display: block;
+    margin-bottom: 0.5rem;
 }
 
-footer a:hover {
-    text-decoration: underline;
+footer a:hover,
+footer a:focus {
+    color: var(--color-accent);
+    padding-left: 5px;
+}
+
+.social-links a {
+    display: inline-block;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    text-align: center;
+    color: rgba(255,255,255,0.6);
+}
+
+/* Back to top button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 55px;
+    height: 55px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-dark) 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: var(--transition);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 999;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-primary) 100%);
+}
+
+.back-to-top:active {
+    transform: translateY(-2px);
+}
+
+/* Sticky Conversion Bar */
+.conversion-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-dark) 100%);
+    color: white;
+    padding: 1.2rem 0;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+    z-index: 998;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.conversion-bar.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.conversion-bar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.conversion-bar-text {
+    flex: 1;
+    min-width: 250px;
+}
+
+.conversion-bar-text h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    color: var(--color-accent);
+}
+
+.conversion-bar-text p {
+    font-size: 0.95rem;
+    margin: 0;
+    opacity: 0.9;
+}
+
+.conversion-bar-cta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.conversion-bar-badge {
+    background: var(--color-coral);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.conversion-bar-close {
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.conversion-bar-close:hover {
+    background: rgba(255,255,255,0.2);
 }
 
 /* Responsive */
@@ -643,6 +785,38 @@ footer a:hover {
 
     .section-title {
         font-size: 2rem;
+    }
+
+    .back-to-top {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1.3rem;
+    }
+
+    .conversion-bar {
+        padding: 1rem 0.5rem;
+    }
+
+    .conversion-bar-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+    }
+
+    .conversion-bar-text {
+        min-width: 100%;
+    }
+
+    .conversion-bar-text h3 {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+
+    .conversion-bar-text p {
+        font-size: 0.85rem;
+        line-height: 1.4;
     }
 }
 
@@ -751,12 +925,12 @@ footer a:hover {
         <section id="sobre">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-4" data-aos="fade-right">
+                    <div class="col-lg-5" data-aos="fade-right">
                         <div class="text-center">
-                            <img src="image/mari1.webp" alt="Mariana Crepaldi - Psicóloga, Supervisora Clínica e Professora" style="max-width: 300px; border-radius: 20px; box-shadow: 0 12px 32px rgba(47,90,115,0.15);">
+                            <img src="image/mari1.webp" alt="Mariana Crepaldi - Psicóloga, Supervisora Clínica e Professora" style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 12px 32px rgba(47,90,115,0.15);">
                         </div>
                     </div>
-                    <div class="col-lg-8" data-aos="fade-left">
+                    <div class="col-lg-7" data-aos="fade-left">
                         <h2 class="section-title">Quem Conduziu os Clubes</h2>
                         <p style="font-size: 1.1rem; margin-bottom: 1.5rem;"><strong>Mariana Crepaldi</strong> é psicóloga, supervisora clínica e professora.</p>
                         <p style="margin-bottom: 1rem;">Há anos ajuda psicólogos a transformarem teoria em prática clínica consistente. Atuando 100% online, os clubes nasceram da maior dor relatada por alunos e supervisionandos:</p>
@@ -1129,25 +1303,78 @@ footer a:hover {
     </main>
 
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo" aria-label="Rodapé do site">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <h3 style="color: var(--color-accent); margin-bottom: 1rem;">Clube do Livro – Psicologia Literária</h3>
-                    <p style="margin-bottom: 1.5rem;">Transformando teoria em prática clínica consistente</p>
-                    <div style="margin-bottom: 2rem;">
-                        <a href="https://www.psicologialiteraria.com.br" style="margin: 0 1rem;">Site Principal</a>
-                        <a href="https://www.instagram.com/psimariana_crepaldi" style="margin: 0 1rem;" target="_blank">Instagram</a>
+                <div class="col-md-4 mb-4">
+                    <h5>Sobre os Clubes</h5>
+                    <p>Clubes do livro gravados com foco em transformar teoria em prática clínica consistente. Conteúdo definitivo com acesso vitalício para psicólogos e terapeutas.</p>
+                    <div class="social-links mt-3">
+                        <a href="https://www.instagram.com/psimariana_crepaldi/" aria-label="Instagram da Psicóloga Mariana Crepaldi" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="mailto:praticandoatcc@gmail.com" aria-label="E-mail">
+                            <i class="bi bi-envelope"></i>
+                        </a>
                     </div>
-                    <p style="font-size: 0.85rem; opacity: 0.7; margin-bottom: 0.5rem;">© 2026 Clube do Livro – Psicologia Literária. Todos os direitos reservados.</p>
-                    <p style="font-size: 0.85rem; opacity: 0.7; margin: 0;">
-                        <a href="https://www.psicologialiteraria.com.br/termos-de-uso" style="color: var(--color-accent);">Termos de Uso</a> |
-                        <a href="https://www.psicologialiteraria.com.br/privacidade" style="color: var(--color-accent);">Política de Privacidade</a>
-                    </p>
                 </div>
+
+                <div class="col-md-4 mb-4">
+                    <h5>Links Úteis</h5>
+                    <a href="#os-3-clubes">Os 3 Clubes</a>
+                    <a href="#sobre">Sobre Mariana</a>
+                    <a href="#investimento">Investimento</a>
+                    <a href="#vantagens">Vantagens</a>
+                    <a href="#faq">Perguntas frequentes</a>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <h5>Contato e Suporte</h5>
+                    <p>
+                        <i class="bi bi-envelope me-2"></i>
+                        <a href="mailto:praticandoatcc@gmail.com" style="display: inline; margin: 0;">praticandoatcc@gmail.com</a>
+                    </p>
+                    <p>
+                        <i class="bi bi-whatsapp me-2"></i>
+                        <a href="https://wa.me/5542998749000" style="display: inline; margin: 0;" target="_blank" rel="noopener noreferrer">(42) 99874-9000</a>
+                    </p>
+                    <a target="_blank" href="https://hotmart.com/pt-br/legal/privacidade-de-dados">Política de Privacidade</a>
+                    <a target="_blank" href="https://hotmart.com/pt-br/legal/termos-de-compra">Termos de Compra</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="mb-0">&copy; 2026 Clube do Livro – Psicologia Literária. Todos os direitos reservados.</p>
+                <p class="mb-0 mt-2">CNPJ: 48.780.920/0001-04</p>
             </div>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- Conversion Bar -->
+    <div class="conversion-bar" id="conversionBar">
+        <div class="container">
+            <div class="conversion-bar-content">
+                <div class="conversion-bar-text">
+                    <h3>🎯 Oferta Especial: Combo Completo</h3>
+                    <p>Economize R$ 54,00 e garanta os 3 clubes + Box de Técnicas. Acesso vitalício!</p>
+                </div>
+                <div class="conversion-bar-cta">
+                    <span class="conversion-bar-badge">ECONOMIA R$ 54</span>
+                    <a href="#final-cta" class="btn btn-cta">
+                        <i class="bi bi-star-fill me-2"></i>Quero o combo completo
+                    </a>
+                </div>
+                <button class="conversion-bar-close" id="closeConversionBar" aria-label="Fechar barra de oferta">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -1177,6 +1404,96 @@ footer a:hover {
                     });
                 }
             });
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Conversion Bar (Idle Detection)
+        const conversionBar = document.getElementById('conversionBar');
+        const closeConversionBarBtn = document.getElementById('closeConversionBar');
+        let scrollTimeout;
+        let conversionBarClosed = false;
+
+        // Check if user previously closed the bar
+        if (sessionStorage.getItem('conversionBarClosed') === 'true') {
+            conversionBarClosed = true;
+        }
+
+        function showConversionBar() {
+            const finalCtaSection = document.getElementById('final-cta');
+
+            // Check if user is in final CTA section
+            let inConversionZone = false;
+            if (finalCtaSection) {
+                const finalCtaRect = finalCtaSection.getBoundingClientRect();
+
+                // User is in conversion zone if section is currently visible in viewport
+                const finalCtaVisible = finalCtaRect.top < window.innerHeight && finalCtaRect.bottom > 0;
+                inConversionZone = finalCtaVisible;
+            }
+
+            // Show bar if: not closed by user, past hero section, and not in conversion zone
+            if (!conversionBarClosed && window.pageYOffset > 500 && !inConversionZone) {
+                if (!conversionBar.classList.contains('show')) {
+                    conversionBar.classList.add('show');
+                }
+            }
+        }
+
+        function hideConversionBar() {
+            if (conversionBar.classList.contains('show')) {
+                conversionBar.classList.remove('show');
+            }
+        }
+
+        // Detect scroll activity and inactivity
+        window.addEventListener('scroll', function() {
+            // Hide bar immediately when user starts scrolling
+            hideConversionBar();
+
+            // Clear previous timeout
+            clearTimeout(scrollTimeout);
+
+            // Set new timeout - show bar after 3 seconds of no scrolling
+            scrollTimeout = setTimeout(showConversionBar, 3000);
+        });
+
+        // Close conversion bar permanently
+        closeConversionBarBtn.addEventListener('click', function() {
+            conversionBar.classList.remove('show');
+            conversionBarClosed = true;
+            sessionStorage.setItem('conversionBarClosed', 'true');
+
+            console.log('Conversion bar closed by user');
+        });
+
+        // Also close conversion bar when user clicks the CTA
+        const conversionBarCTA = conversionBar.querySelector('.btn-cta');
+        conversionBarCTA.addEventListener('click', function() {
+            // Small delay to allow smooth scroll to start
+            setTimeout(() => {
+                conversionBar.classList.remove('show');
+                conversionBarClosed = true;
+                sessionStorage.setItem('conversionBarClosed', 'true');
+
+                console.log('Conversion bar CTA clicked');
+            }, 300);
         });
     </script>
 </body>
